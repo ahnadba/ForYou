@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForYou Store</title>
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+
+    <header>
+      <nav class="navbar">
+        <a class="logolink" href="index.html">
+          <div class="nav-left">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+              alt="logo"
+              class="logo-img"
+            />
+            <span class="logo-text">ForYou</span>
+          </div>
+        </a>
+
+        <ul class="nav-center" id="nav-menu">
+          <li class="nav-item"><a href="index.html" data-i18n="home">Home</a></li>
+
+          <li class="nav-item nav-item-categories">
+            <div class="categories-nav-row">
+              <a href="#" id="categoriesLink" data-i18n="categories">Categories</a>
+
+              <button
+                type="button"
+                class="categories-toggle-mobile"
+                id="mobileCategoriesToggle"
+                aria-controls="mobileSubcategories"
+                aria-expanded="false"
+                aria-label="Open categories"
+              >
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <ul class="mobile-subcategories" id="mobileSubcategories">
+              <!-- inserted by JS -->
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="products.html" data-i18n="products">Products</a></li>
+          <li class="nav-item"><a href="about.html" data-i18n="about">About Us</a></li>
+          <li class="nav-item"><a href="#footer" data-i18n="contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="language-switcher">
+            <label for="languageSelect" class="sr-only" data-i18n="languageLabel">Select language</label>
+            <select id="languageSelect" onchange="setLanguage(this.value)" aria-label="Select language">
+              <option value="en">EN</option>
+              <option value="he">HE</option>
+            </select>
+          </div>
+
+          <a href="cart.html" class="cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+
+          <div class="menu-btn" id="menuBtn" aria-label="Open menu">☰</div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="categories-modal" id="categoriesModal" aria-hidden="true">
+      <div class="categories-modal-content">
+        <div class="categories-modal-header">
+          <h2 data-i18n="checkCategories">Check Our Categories</h2>
+          <button
+            class="categories-close-btn"
+            id="closeCategoriesModal"
+            aria-label="Close categories"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="categories-modal-grid" id="categoriesModalGrid">
+          <p class="categories-loading" data-i18n="loadingProducts">Loading products...</p>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- Hero Section -->
+
+      <section class="hero">
+        <div class="hero-content">
+          <h1 data-i18n="heroTitle">Fashion Made For You</h1>
+
+          <p data-i18n="heroText">
+            Discover styles that fit your personality, your comfort, and your
+            everyday life.
+          </p>
+
+          <a href="products.html" class="hero-btn" data-i18n="shopNow">Shop Now</a>
+        </div>
+      </section>
+
+      <!-- Category -->
+      <section class="categories-section">
+        <div class="categories-header">
+          <h2 data-i18n="shopByCategory">Shop by Category</h2>
+          <p data-i18n="exploreCollections">Explore our collections and find the styles that fit you best.</p>
+        </div>
+
+        <div class="categories-grid">
+          <a href="category.html?id=1" class="category-card">
+            <img
+              src="https://picsum.photos/seed/pajama/600/700"
+              alt="Pajamas"
+            />
+            <div class="category-overlay">
+              <h3 data-i18n="pajamas">Pajamas</h3>
+            </div>
+          </a>
+
+          <a href="category.html?id=2" class="category-card">
+            <img
+              src="https://picsum.photos/seed/bedsheet/600/700"
+              alt="Bedsheets"
+            />
+            <div class="category-overlay">
+              <h3 data-i18n="bedsheets">Bedsheets</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- New Collection -->
+
+      <section class="new-collection-section">
+        <div class="new-collection-header">
+          <h2 data-i18n="newCollection">New Collection</h2>
+          <p data-i18n="exploreLatest">Explore the latest pieces added to our store.</p>
+        </div>
+
+        <div class="new-collection-wrapper">
+          <button
+            class="collection-nav prev-btn"
+            id="prevBtn"
+            aria-label="Previous product"
+          >
+            &#10094;
+          </button>
+
+          <div class="collection-stage" id="collectionStage">
+            <!-- cards inserted by JS -->
+          </div>
+
+          <button
+            class="collection-nav next-btn"
+            id="nextBtn"
+            aria-label="Next product"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+      <!-- Why Shop with us -->
+      <section class="why-shop">
+        <div class="why-header">
+          <h2 data-i18n="whyShop">Why Shop With Us</h2>
+          <p data-i18n="shopFocus">
+            We focus on quality, comfort, and a seamless shopping experience.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <i class="fa-solid fa-sparkles"></i>
+            <h3 data-i18n="fastShipping">Fast Shipping</h3>
+            <p data-i18n="shippingDesc">Quick and reliable delivery straight to your door.</p>
+          </div>
+
+          <div class="why-card">
+            <i class="fa-solid fa-heart"></i>
+            <h3 data-i18n="premiumQuality">Premium Quality</h3>
+            <p data-i18n="qualityDesc">Carefully selected materials for maximum comfort.</p>
+          </div>
+
+          <div class="why-card">
+            <i class="fa-solid fa-ribbon"></i>
+            <h3 data-i18n="easyReturns">Easy Returns</h3>
+            <p data-i18n="returnsDesc">Simple return policy for stress-free shopping.</p>
+          </div>
+
+          <div class="why-card">
+            <i class="fa-solid fa-headset"></i>
+            <h3 data-i18n="secureCheckout">Secure Checkout</h3>
+            <p data-i18n="checkoutDesc">Your payment and personal data are always protected.</p>
+          </div>
+        </div>
+      </section>
+
+      <!--footer-->
+      <footer class="footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-brand">
+            <h3 data-i18n="footerBrand">ForYou</h3>
+            <p data-i18n="brandDesc">Comfort, quality, and style designed for everyday living.</p>
+          </div>
+
+          <div class="footer-contact">
+            <h4 data-i18n="contactInfo">Contact</h4>
+            <p data-i18n="beerSheva">Beer Sheva, Israel</p>
+            <p data-i18n="email">info@foryou.com</p>
+            <p data-i18n="phone">05000000000</p>
+          </div>
+
+          <div class="footer-links">
+            <h4 data-i18n="quickLinks">Quick Links</h4>
+            <a href="index.html" data-i18n="home">Home</a>
+            <a href="products.html" data-i18n="products">Products</a>
+            <a href="about.html" data-i18n="about">About Us</a>
+            <a href="cart.html" data-i18n="cart">Cart</a>
+            <a href="#footer" data-i18n="contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 ForYou. All rights reserved.</p>
+        </div>
+      </footer>
+      <script src="js/translations.js"></script>
+      <script src="js/utils.js"></script>
+      <script src="js/script.js"></script>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category | ForYou</title>
+
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/categories.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="logolink" href="index.html">
+          <div class="nav-left">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+              alt="logo"
+              class="logo-img"
+            />
+            <span class="logo-text">ForYou</span>
+          </div>
+        </a>
+
+        <ul class="nav-center" id="nav-menu">
+          <li class="nav-item"><a href="index.html" data-i18n="home">Home</a></li>
+
+          <li class="nav-item nav-item-categories">
+            <div class="categories-nav-row">
+              <a href="#" id="categoriesLink" data-i18n="categories">Categories</a>
+
+              <button
+                type="button"
+                class="categories-toggle-mobile"
+                id="mobileCategoriesToggle"
+                aria-controls="mobileSubcategories"
+                aria-expanded="false"
+                aria-label="Open categories"
+              >
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <ul class="mobile-subcategories" id="mobileSubcategories">
+              <!-- inserted by JS -->
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="products.html" data-i18n="products">Products</a></li>
+          <li class="nav-item"><a href="about.html" data-i18n="about">About Us</a></li>
+          <li class="nav-item"><a href="#footer" data-i18n="contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="language-switcher">
+            <label for="languageSelect" class="sr-only" data-i18n="languageLabel">Select language</label>
+            <select id="languageSelect" onchange="setLanguage(this.value)" aria-label="Select language">
+              <option value="en">EN</option>
+              <option value="he">HE</option>
+            </select>
+          </div>
+
+          <a href="cart.html" class="cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+
+          <div class="menu-btn" id="menuBtn" aria-label="Open menu">☰</div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="categories-modal" id="categoriesModal" aria-hidden="true">
+      <div class="categories-modal-content">
+        <div class="categories-modal-header">
+          <h2 data-i18n="checkCategories">Check Our Categories</h2>
+          <button
+            class="categories-close-btn"
+            id="closeCategoriesModal"
+            aria-label="Close categories"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="categories-modal-grid" id="categoriesModalGrid">
+          <p class="categories-loading" data-i18n="loadingProducts">Loading products...</p>
+        </div>
+      </div>
+    </div>
+
+    <main class="category-page">
+      <div class="category-header">
+        <h1 id="categoryTitle">Category</h1>
+        <p id="categorySubtitle">Browse products in this category</p>
+      </div>
+
+      <div class="category-products-grid" id="categoryProductsGrid">
+        <p class="category-loading">Loading products...</p>
+      </div>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3 data-i18n="footerBrand">ForYou</h3>
+          <p data-i18n="brandDesc">Comfort, quality, and style designed for everyday living.</p>
+        </div>
+
+        <div class="footer-contact">
+          <h4 data-i18n="contactInfo">Contact</h4>
+          <p data-i18n="beerSheva">Beer Sheva, Israel</p>
+          <p data-i18n="email">info@foryou.com</p>
+          <p data-i18n="phone">05000000000</p>
+        </div>
+
+        <div class="footer-links">
+          <h4 data-i18n="quickLinks">Quick Links</h4>
+          <a href="index.html" data-i18n="home">Home</a>
+          <a href="products.html" data-i18n="products">Products</a>
+          <a href="about.html" data-i18n="about">About Us</a>
+          <a href="cart.html" data-i18n="cart">Cart</a>
+          <a href="#footer" data-i18n="contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 ForYou. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/categories.js"></script>
+  </body>
+</html>

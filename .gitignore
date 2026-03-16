@@ -1,0 +1,30 @@
+# Build output
+/target/
+/backend/target/
+**/target/
+
+# IDE files
+/.idea/
+/.vscode/
+**/.idea/
+**/.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Scratch / local-only folders
+/untitled/
+
+# Logs
+*.log
+
+# Local environment / secrets
+.env
+.env.*
+/backend/src/main/resources/application-local.properties
+/backend/src/main/resources/application-secrets.properties
+
+# OS files
+.DS_Store
+Thumbs.db
+
