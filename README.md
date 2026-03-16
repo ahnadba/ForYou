@@ -1,6 +1,6 @@
 # ForYou E-Commerce
 
-ForYou is a beginner-friendly e-commerce project for a women's store, built with a Spring Boot backend, PostgreSQL, and a vanilla HTML/CSS/JavaScript frontend.
+ForYou is a beginner-friendly e-commerce project for a local business for a women's store, built with a Spring Boot backend, PostgreSQL, and a vanilla HTML/CSS/JavaScript frontend.
 
 ## Tech Stack
 - Backend: Spring Boot (REST API + static assets/Thymeleaf)
@@ -93,7 +93,7 @@ GET /api/categories
 - Read `CONTRIBUTING.md` for branch/PR workflow.
 - Project is licensed under `LICENSE` (MIT).
 
-## Roadmap Ideas
+## Roadmap:
 - Add screenshots for homepage, products, category, and cart.
 - Add API response examples for each endpoint.
 - Add CI checks for backend tests and frontend linting.
