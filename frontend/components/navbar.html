@@ -1,5 +1,4 @@
 <nav class="navbar">
-
   <a class="logolink" href="index.html">
     <div class="nav-left">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="logo" class="logo-img">
@@ -8,21 +7,58 @@
   </a>
 
   <ul class="nav-center" id="nav-menu">
-    <li class="nav-item"><a href="index.html">Home</a></li>
-    <li class="nav-item"><a href="category.html">Categories</a></li>
-    <li class="nav-item"><a href="products.html">Products</a></li>
-    <li class="nav-item"><a href="#footer">Contact</a></li>
-    <li class="nav-item"><a href="about.html">About Us</a></li>
+    <li class="nav-item"><a href="index.html" data-i18n="home">Home</a></li>
+
+    <li class="nav-item nav-item-categories">
+      <div class="categories-nav-row">
+        <a href="#" id="categoriesLink" data-i18n="categories">Categories</a>
+
+        <button
+          type="button"
+          class="categories-toggle-mobile"
+          id="mobileCategoriesToggle"
+          aria-controls="mobileSubcategories"
+          aria-expanded="false"
+          aria-label="Open categories"
+        >
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-subcategories" id="mobileSubcategories"></ul>
+    </li>
+
+    <li class="nav-item"><a href="products.html" data-i18n="products">Products</a></li>
+    <li class="nav-item"><a href="about.html" data-i18n="about">About Us</a></li>
+    <li class="nav-item"><a href="#footer" data-i18n="contact">Contact</a></li>
   </ul>
 
   <div class="nav-right">
-    <div class="cart">
-      <i class="fa-solid fa-cart-shopping"></i>
+    <div class="language-switcher" data-language-switcher>
+      <button
+        type="button"
+        class="language-toggle"
+        data-language-toggle
+        aria-label="Select language"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <span class="language-current" data-language-current>EN</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="language-menu" data-language-menu hidden>
+        <button type="button" class="language-option" data-language-option="en">English</button>
+        <button type="button" class="language-option" data-language-option="he">עברית</button>
+      </div>
     </div>
 
-    <div class="menu-btn" id="menuBtn">
-      ☰
-    </div>
+    <a href="cart.html" class="cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </a>
+
+    <div class="menu-btn" id="menuBtn" aria-label="Open menu">☰</div>
   </div>
 
 </nav>

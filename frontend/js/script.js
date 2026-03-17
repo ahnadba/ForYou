@@ -19,6 +19,9 @@ function setMobileMenuState(isOpen) {
 
 function closeMobileMenu() {
   setMobileMenuState(false);
+  if (typeof closeLanguageMenu === "function") {
+    closeLanguageMenu();
+  }
 }
 
 function toggleMobileMenu() {
@@ -376,6 +379,10 @@ function getOrCreateMobileLanguageSlot() {
 
 function syncLanguageSwitcherPlacement() {
   if (!languageSwitcher || !navMenu || !navRight) return;
+
+  if (typeof closeLanguageMenu === "function") {
+    closeLanguageMenu();
+  }
 
   const isMobile = window.innerWidth <= 600;
   const slot = getOrCreateMobileLanguageSlot();

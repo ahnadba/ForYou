@@ -57,12 +57,23 @@
         </ul>
 
         <div class="nav-right">
-          <div class="language-switcher">
-            <label for="languageSelect" class="sr-only" data-i18n="languageLabel">Select language</label>
-            <select id="languageSelect" onchange="setLanguage(this.value)" aria-label="Select language">
-              <option value="en">EN</option>
-              <option value="he">HE</option>
-            </select>
+          <div class="language-switcher" data-language-switcher>
+            <button
+              type="button"
+              class="language-toggle"
+              data-language-toggle
+              aria-label="Select language"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="language-current" data-language-current>EN</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="language-menu" data-language-menu hidden>
+              <button type="button" class="language-option" data-language-option="en">English</button>
+              <button type="button" class="language-option" data-language-option="he">עברית</button>
+            </div>
           </div>
 
           <a href="cart.html" class="cart">

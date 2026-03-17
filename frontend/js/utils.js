@@ -77,10 +77,7 @@ function updateLanguage() {
     el.textContent = getTranslation(key);
   });
 
-  const languageSelectElement = document.getElementById('languageSelect');
-  if (languageSelectElement) {
-    languageSelectElement.setAttribute('aria-label', getTranslation('languageLabel'));
-  }
+  updateLanguageSelectorUI();
 }
 
 /**
@@ -93,15 +90,104 @@ function getTranslation(key) {
   return translations[lang][key] || key;
 }
 
+function closeLanguageMenu() {
+  const languageSwitcher = document.querySelector('[data-language-switcher]');
+  if (!languageSwitcher) return;
+
+  const languageMenu = languageSwitcher.querySelector('[data-language-menu]');
+  const languageToggle = languageSwitcher.querySelector('[data-language-toggle]');
+
+  if (languageMenu) {
+    languageMenu.hidden = true;
+  }
+
+  languageSwitcher.classList.remove('open');
+
+  if (languageToggle) {
+    languageToggle.setAttribute('aria-expanded', 'false');
+  }
+}
+
+function updateLanguageSelectorUI() {
+  const languageSwitcher = document.querySelector('[data-language-switcher]');
+  if (!languageSwitcher) return;
+
+  const languageToggle = languageSwitcher.querySelector('[data-language-toggle]');
+  const languageCurrent = languageSwitcher.querySelector('[data-language-current]');
+  const currentLanguage = getCurrentLanguage();
+
+  if (languageToggle) {
+    languageToggle.setAttribute('aria-label', getTranslation('languageLabel'));
+  }
+
+  if (languageCurrent) {
+    languageCurrent.textContent = currentLanguage === 'he' ? 'HE' : 'EN';
+  }
+
+  languageSwitcher.querySelectorAll('[data-language-option]').forEach((optionButton) => {
+    const isActive = optionButton.dataset.languageOption === currentLanguage;
+    optionButton.classList.toggle('active', isActive);
+    optionButton.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+}
+
 /**
- * Initializes the shared language select element in the navbar.
- * Avoids duplicate const declarations across page-level scripts.
+ * Initializes the shared language dropdown in the navbar.
+ * The switcher is shared across pages and moved into the mobile drawer on phones.
  */
 function initLanguageSelector() {
-  const languageSelectElement = document.getElementById('languageSelect');
-  if (!languageSelectElement) return;
-  languageSelectElement.value = getCurrentLanguage();
-  languageSelectElement.setAttribute('aria-label', getTranslation('languageLabel'));
+  const languageSwitcher = document.querySelector('[data-language-switcher]');
+  if (!languageSwitcher) return;
+
+  const languageToggle = languageSwitcher.querySelector('[data-language-toggle]');
+  const languageMenu = languageSwitcher.querySelector('[data-language-menu]');
+  const languageOptions = languageSwitcher.querySelectorAll('[data-language-option]');
+
+  if (!languageToggle || !languageMenu || !languageOptions.length) return;
+
+  if (languageSwitcher.dataset.initialized === 'true') {
+    updateLanguageSelectorUI();
+    return;
+  }
+
+  languageToggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const willOpen = languageMenu.hidden;
+
+    if (willOpen) {
+      languageMenu.hidden = false;
+      languageSwitcher.classList.add('open');
+      languageToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      closeLanguageMenu();
+    }
+  });
+
+  languageOptions.forEach((optionButton) => {
+    optionButton.addEventListener('click', () => {
+      const nextLanguage = optionButton.dataset.languageOption;
+      if (!nextLanguage) return;
+
+      setLanguage(nextLanguage);
+      closeLanguageMenu();
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!languageSwitcher.contains(event.target)) {
+      closeLanguageMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeLanguageMenu();
+    }
+  });
+
+  languageSwitcher.dataset.initialized = 'true';
+  closeLanguageMenu();
+  updateLanguageSelectorUI();
 }
 
 /**
