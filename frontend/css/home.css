@@ -1482,25 +1482,27 @@ body.rtl .new-collection-wrapper {
 
 body.rtl .hero-btn,
 body.rtl .why-card,
-body.rtl .category-card,
 body.rtl .collection-card {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
+/* Category cards should fill grid on all screen sizes */
+body.rtl .category-card {
+  text-align: center;
+}
+
 /* Prevent RTL auto margins from breaking mobile grids */
 @media (max-width: 900px) {
-  body.rtl .why-card,
-  body.rtl .category-card {
+  body.rtl .why-card {
     margin-left: 0;
     margin-right: 0;
   }
 }
 
 @media (max-width: 600px) {
-  body.rtl .why-card,
-  body.rtl .category-card {
+  body.rtl .why-card {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
