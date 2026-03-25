@@ -21,14 +21,16 @@
     }
     .product-card:hover { transform: translateY(-10px); }
     .footer { background: #1a1a1a; color: white; padding: 40px 0; }
-    .admin-link { font-size: 0.7rem; color: #555; text-decoration: none; }
   </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="/">FOR YOU</a>
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+      <img th:src="@{/images/ForYou logo.svg}" alt="ForYou logo" style="height:36px;width:auto;">
+      FOR YOU
+    </a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
@@ -75,7 +77,6 @@
   <div class="container text-center">
     <p class="mb-1">&copy; 2026 FOR YOU CLOTHING</p>
     <p class="small text-secondary">Crafted with care for your comfort.</p>
-    <a href="/admin/shop" class="admin-link">Staff Login</a>
   </div>
 </footer>
 <script th:src="@{/js/script.js}"></script>

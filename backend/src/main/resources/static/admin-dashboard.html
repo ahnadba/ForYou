@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForYou Admin Dashboard</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-topbar">
+        <div class="admin-brand">ForYou Admin</div>
+        <nav class="admin-nav">
+          <a href="/admin-dashboard.html" data-admin-nav>Dashboard</a>
+          <a href="/admin-products.html" data-admin-nav>Products</a>
+          <a href="/admin-categories.html" data-admin-nav>Categories</a>
+          <button id="adminLogoutBtn" class="btn-danger" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <section class="grid grid-3">
+        <article class="card">
+          <div class="muted">Products</div>
+          <div id="metricProducts" class="metric-value">-</div>
+        </article>
+        <article class="card">
+          <div class="muted">Categories</div>
+          <div id="metricCategories" class="metric-value">-</div>
+        </article>
+        <article class="card">
+          <div class="muted">Active Products</div>
+          <div id="metricActiveProducts" class="metric-value">-</div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/admin/admin.js"></script>
+    <script src="/admin/admin-dashboard.js"></script>
+  </body>
+</html>
+
+

@@ -31,11 +31,13 @@ public class DataSeeder implements CommandLineRunner {
         Category pajamas = new Category();
         pajamas.setName("Pajamas");
         pajamas.setNameHe("פיג'מות");
+        pajamas.setImageUrl("https://picsum.photos/seed/pajama-category/900/1100");
         pajamas.setActive(true);
 
         Category bedsheets = new Category();
         bedsheets.setName("Bedsheets");
         bedsheets.setNameHe("סדינים");
+        bedsheets.setImageUrl("https://picsum.photos/seed/bedsheet-category/900/1100");
         bedsheets.setActive(true);
 
         categoryRepository.saveAll(List.of(pajamas, bedsheets));

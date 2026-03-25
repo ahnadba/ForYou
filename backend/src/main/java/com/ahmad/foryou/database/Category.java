@@ -15,6 +15,8 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
+    private String imageUrl;
+
     private boolean active = true;
 
     // Important: don't return this in API directly (DTO later)
@@ -53,6 +55,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getNameHe() {

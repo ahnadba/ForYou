@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForYou Admin Categories</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-topbar">
+        <div class="admin-brand">ForYou Admin</div>
+        <nav class="admin-nav">
+          <a href="/admin-dashboard.html" data-admin-nav>Dashboard</a>
+          <a href="/admin-products.html" data-admin-nav>Products</a>
+          <a href="/admin-categories.html" data-admin-nav>Categories</a>
+          <button id="adminLogoutBtn" class="btn-danger" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <section class="card" style="margin-bottom: 16px">
+        <h2>Add Category</h2>
+        <form id="categoryCreateForm" class="form-grid" style="margin-top: 12px">
+          <div>
+            <label for="newCategoryName">Name</label>
+            <input id="newCategoryName" required />
+          </div>
+          <div>
+            <label for="newCategoryNameHe">Name (Hebrew)</label>
+            <input id="newCategoryNameHe" />
+          </div>
+          <div>
+            <label for="newCategoryImageUrl">Image URL</label>
+            <input id="newCategoryImageUrl" />
+          </div>
+          <div style="display: flex; align-items: end">
+            <button type="submit" class="btn-primary">Create Category</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Name (Hebrew)</th>
+              <th>Image URL</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="categoriesTableBody"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="/admin/admin.js"></script>
+    <script src="/admin/admin-categories.js"></script>
+  </body>
+</html>
+
+

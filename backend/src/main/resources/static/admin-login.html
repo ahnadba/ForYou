@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForYou Admin Login</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <main class="login-page">
+      <section class="card login-card">
+        <h1>Admin Login</h1>
+        <p class="muted">Store owner access only.</p>
+
+        <form id="adminLoginForm" class="grid" style="margin-top: 14px">
+          <div>
+            <label for="adminPassword">Password</label>
+            <input id="adminPassword" type="password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+          <div id="adminLoginError" class="error-message"></div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/admin/admin.js"></script>
+    <script src="/admin/admin-login.js"></script>
+  </body>
+</html>
+

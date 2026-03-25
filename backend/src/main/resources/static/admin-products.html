@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForYou Admin Products</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-topbar">
+        <div class="admin-brand">ForYou Admin</div>
+        <nav class="admin-nav">
+          <a href="/admin-dashboard.html" data-admin-nav>Dashboard</a>
+          <a href="/admin-products.html" data-admin-nav>Products</a>
+          <a href="/admin-categories.html" data-admin-nav>Categories</a>
+          <button id="adminLogoutBtn" class="btn-danger" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <section class="card" style="margin-bottom: 16px">
+        <h2 id="productFormTitle">Add Product</h2>
+        <form id="productForm" class="grid" style="margin-top: 12px">
+          <input type="hidden" id="productId" />
+
+          <div class="form-grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" required />
+            </div>
+            <div>
+              <label for="nameHe">Name (Hebrew)</label>
+              <input id="nameHe" />
+            </div>
+            <div>
+              <label for="material">Material</label>
+              <input id="material" />
+            </div>
+            <div>
+              <label for="price">Price</label>
+              <input id="price" type="number" min="0" step="0.01" required />
+            </div>
+            <div>
+              <label for="mainImageUrl">Main Image URL</label>
+              <input id="mainImageUrl" />
+            </div>
+            <div>
+              <label for="categoryId">Category</label>
+              <select id="categoryId" required></select>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 12px">
+            <label>Main Image Preview</label>
+            <div class="admin-image-preview-wrap">
+              <img id="mainImagePreview" class="admin-image-preview" alt="Main product preview" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div>
+              <label for="description">Description</label>
+              <textarea id="description"></textarea>
+            </div>
+            <div>
+              <label for="descriptionHe">Description (Hebrew)</label>
+              <textarea id="descriptionHe"></textarea>
+            </div>
+          </div>
+
+          <div>
+            <label style="display: inline-flex; align-items: center; gap: 8px">
+              <input id="active" type="checkbox" checked style="width: auto" />
+              Active
+            </label>
+          </div>
+
+          <div class="card" style="padding: 12px">
+            <div class="section-row">
+              <h3 style="margin: 0">Additional Images</h3>
+              <button type="button" id="addImageBtn">Add Image</button>
+            </div>
+            <div id="imagesList" class="stack-list"></div>
+          </div>
+
+          <div class="card" style="padding: 12px">
+            <div class="section-row">
+              <h3 style="margin: 0">Variants</h3>
+              <button type="button" id="addVariantBtn">Add Variant</button>
+            </div>
+            <div id="variantsList" class="stack-list"></div>
+          </div>
+
+          <div style="display: flex; gap: 8px">
+            <button type="submit" class="btn-primary">Save Product</button>
+            <button id="productCancelEdit" type="button" style="display: none">Cancel Edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Edit</th>
+              <th>Toggle</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="/admin/admin.js"></script>
+    <script src="/admin/admin-products.js"></script>
+  </body>
+</html>
+
+

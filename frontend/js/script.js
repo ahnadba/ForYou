@@ -228,6 +228,7 @@ const categoriesLink = document.getElementById("categoriesLink");
 const categoriesModal = document.getElementById("categoriesModal");
 const closeCategoriesModal = document.getElementById("closeCategoriesModal");
 const categoriesModalGrid = document.getElementById("categoriesModalGrid");
+const homepageCategoriesGrid = document.getElementById("homepageCategoriesGrid");
 const mobileCategoriesToggle = document.getElementById("mobileCategoriesToggle");
 const mobileSubcategories = document.getElementById("mobileSubcategories");
 const languageSwitcher = document.querySelector(".language-switcher");
@@ -238,7 +239,7 @@ let mobileLanguageSlot = null;
 let cachedCategories = [];
 
 async function loadCategories() {
-  if (!categoriesModalGrid && !mobileSubcategories) return;
+  if (!categoriesModalGrid && !mobileSubcategories && !homepageCategoriesGrid) return;
 
   try {
     const response = await fetch(`${API_BASE_URL}/categories?lang=${getCurrentLanguage()}`);
@@ -248,10 +249,14 @@ async function loadCategories() {
 
     const categories = await response.json();
     cachedCategories = Array.isArray(categories) ? categories : [];
+    renderHomepageCategories(cachedCategories);
     renderCategoriesModal(cachedCategories);
     renderMobileSubcategories(cachedCategories);
   } catch (error) {
     console.error("Error loading categories:", error);
+    if (homepageCategoriesGrid) {
+      homepageCategoriesGrid.innerHTML = `<div class="categories-error">${getTranslation("categoriesLoadError")}</div>`;
+    }
     if (categoriesModalGrid) {
       categoriesModalGrid.innerHTML = `<div class="categories-error">${getTranslation("categoriesLoadError")}</div>`;
     }
@@ -259,6 +264,35 @@ async function loadCategories() {
       mobileSubcategories.innerHTML = `<li><a href="#">${getTranslation("categoriesLoadError")}</a></li>`;
     }
   }
+}
+
+function getCategoryImage(category) {
+  return (
+    category.imageUrl ||
+    "https://via.placeholder.com/900x1100?text=Category"
+  );
+}
+
+function renderHomepageCategories(categories) {
+  if (!homepageCategoriesGrid) return;
+
+  if (!categories.length) {
+    homepageCategoriesGrid.innerHTML = `<div class="categories-empty">${getTranslation("noCategories")}</div>`;
+    return;
+  }
+
+  homepageCategoriesGrid.innerHTML = categories
+    .map(
+      (category) => `
+        <a href="category.html?id=${category.id}" class="category-card">
+          <img src="${escapeHtml(getCategoryImage(category))}" alt="${escapeHtml(getCategoryName(category))}" />
+          <div class="category-overlay">
+            <h3>${escapeHtml(getCategoryName(category))}</h3>
+          </div>
+        </a>
+      `,
+    )
+    .join("");
 }
 
 function renderCategoriesModal(categories) {
@@ -272,7 +306,10 @@ function renderCategoriesModal(categories) {
     .map(
       (category) => `
     <a class="category-modal-card" href="category.html?id=${category.id}">
-      <h3>${escapeHtml(getCategoryName(category))}</h3>
+      <img class="category-modal-thumb" src="${escapeHtml(getCategoryImage(category))}" alt="${escapeHtml(getCategoryName(category))}">
+      <div class="category-modal-copy">
+        <h3>${escapeHtml(getCategoryName(category))}</h3>
+      </div>
     </a>
   `,
     )

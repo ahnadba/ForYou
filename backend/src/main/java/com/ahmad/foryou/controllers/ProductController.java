@@ -1,6 +1,5 @@
 package com.ahmad.foryou.controllers;
 
-import com.ahmad.foryou.dto.CreateProductRequest;
 import com.ahmad.foryou.dto.ProductDetailsDTO;
 import com.ahmad.foryou.dto.ProductListItemDTO;
 import com.ahmad.foryou.services.ProductService;
@@ -36,10 +35,5 @@ public class ProductController {
     @GetMapping("/new")
     public List<ProductListItemDTO> getNewProducts(@RequestParam(defaultValue = "en") String lang) {
         return productService.getNewestProducts(lang);
-    }
-
-    @PostMapping
-    public ProductDetailsDTO createProduct(@RequestBody CreateProductRequest request) {
-        return productService.createProduct(request);
     }
 }
