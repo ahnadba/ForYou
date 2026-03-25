@@ -1489,6 +1489,24 @@ body.rtl .collection-card {
   text-align: center;
 }
 
+/* Prevent RTL auto margins from breaking mobile grids */
+@media (max-width: 900px) {
+  body.rtl .why-card,
+  body.rtl .category-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  body.rtl .why-card,
+  body.rtl .category-card {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
 body.rtl .category-modal-card {
   flex-direction: row-reverse;
   text-align: right;
