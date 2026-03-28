@@ -14,5 +14,4 @@ window.FORYOU_API_BASE_URL = (
   window.location.hostname === "127.0.0.1"
 )
   ? "http://localhost:8080/api"
-  : "https://<my-backend>.onrender.com/api";
-
+  : "https://foryou-y6my.onrender.com";
