@@ -1,4 +1,6 @@
-const PRODUCTS_API_BASE_URL = "http://localhost:8080/api/products";
+const PRODUCTS_API_BASE_URL =
+  window.FORYOU_PRODUCTS_API_URL ||
+  `${window.FORYOU_API_BASE_URL}/products`;
 const productContainer = document.getElementById("product-container");
 
 let selectedOptions = {};

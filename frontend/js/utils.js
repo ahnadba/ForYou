@@ -216,3 +216,18 @@ function getLocalizedText(item, baseField, fallback = '') {
   return fallback;
 }
 
+// Shared API endpoints for storefront pages.
+// Override window.FORYOU_API_BASE_URL before scripts load if needed.
+(function initApiConfig() {
+  const fallbackApiBaseUrl = "https://<my-backend>.onrender.com/api";
+  const providedApiBaseUrl =
+    typeof window.FORYOU_API_BASE_URL === "string"
+      ? window.FORYOU_API_BASE_URL
+      : fallbackApiBaseUrl;
+
+  const normalizedApiBaseUrl = providedApiBaseUrl.replace(/\/+$/, "");
+
+  window.FORYOU_API_BASE_URL = normalizedApiBaseUrl;
+  window.FORYOU_PRODUCTS_API_URL = `${normalizedApiBaseUrl}/products`;
+  window.FORYOU_CATEGORIES_API_URL = `${normalizedApiBaseUrl}/categories`;
+})();

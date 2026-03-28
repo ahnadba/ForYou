@@ -1,5 +1,9 @@
-const CATEGORIES_ENDPOINT = "http://localhost:8080/api/categories";
-const PRODUCTS_ENDPOINT = "http://localhost:8080/api/products";
+const CATEGORIES_ENDPOINT =
+  window.FORYOU_CATEGORIES_API_URL ||
+  `${window.FORYOU_API_BASE_URL}/categories`;
+const PRODUCTS_ENDPOINT =
+  window.FORYOU_PRODUCTS_API_URL ||
+  `${window.FORYOU_API_BASE_URL}/products`;
 
 const categoryTitle = document.getElementById("categoryTitle");
 const categorySubtitle = document.getElementById("categorySubtitle");

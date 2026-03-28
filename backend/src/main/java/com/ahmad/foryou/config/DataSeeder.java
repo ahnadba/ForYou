@@ -3,6 +3,7 @@ package com.ahmad.foryou.config;
 import com.ahmad.foryou.database.*;
 import com.ahmad.foryou.repositories.CategoryRepository;
 import com.ahmad.foryou.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,9 @@ public class DataSeeder implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
+    @Value("${app.seeding.enabled:true}")
+    private boolean seedingEnabled;
+
     public DataSeeder(CategoryRepository categoryRepository,
                       ProductRepository productRepository) {
         this.categoryRepository = categoryRepository;
@@ -25,6 +29,7 @@ public class DataSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        if (!seedingEnabled) return;
         if (productRepository.count() > 0) return; // don't duplicate on restart
 
         // ===== Categories =====

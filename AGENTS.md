@@ -8,7 +8,7 @@
 - **API Structure**: `/api/products`, `/api/categories`; CORS enabled for dev ports (5500, 3000, 5173)
 
 ## Developer Workflows
-- **Run Backend**: `.\backend\mvnw.cmd spring-boot:run` (Windows); starts on port 8080, serves static frontend
+- **Run Backend**: `cd backend` then `.\mvnw.cmd spring-boot:run` (Windows); OR from repo root: `.\backend\mvnw.cmd -f .\backend\pom.xml spring-boot:run`; starts on port 8080, serves static frontend
 - **Database**: PostgreSQL on localhost:5432; `ddl-auto=update`; SQL logging enabled in `application.properties`
 - **Debugging**: Enable Hibernate SQL tracing; check actuator endpoints at `/actuator/`
 - **Frontend Dev**: Open `frontend/index.html` in browser or VS Code Live Server (port 5500)
@@ -17,7 +17,7 @@
 - **Entities**: In `database/` package; use `@PrePersist/@PreUpdate` for timestamps; lazy fetch for relations
 - **Repositories**: Extend `JpaRepository`; use `@EntityGraph` for eager fetching (e.g., category in `ProductRepository`)
 - **Services**: Business logic in `services/`; map entities to DTOs (`dto/` package)
-- **Controllers**: REST with `@CrossOrigin`; inject services; return DTOs
+- **Controllers**: REST `@RestController`; inject services; return DTOs; CORS handled globally via `WebConfig`
 - **DTOs**: Separate request/response DTOs (e.g., `CreateProductRequest`, `ProductDetailsDTO`)
 - **Variants**: Products have base price + variant deltas; variants have stock status
 - **Images**: Main image URL on product; additional images in `ProductImage` list
@@ -25,7 +25,7 @@
 ## Examples
 - Add product variant: In `ProductService.createProduct()`, create `ProductVariant` with `priceDelta` and attach to product
 - Fetch products: Use repository methods like `findByActiveTrueAndCategory_IdOrderByCreatedAtDesc()`
-- CORS: Configured in `WebConfig` for dev origins; controllers have `@CrossOrigin` for Live Server
+- CORS: Origins defined in `app.cors.allowed-origins` in `application.properties`; applied globally in `WebConfig`; no per-controller annotations
 - Seeding: `DataSeeder` runs on startup if no products; creates sample pajamas/bedsheets with variants
 
 ## Key Files

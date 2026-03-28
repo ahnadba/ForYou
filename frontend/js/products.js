@@ -1,4 +1,6 @@
-const API_URL = "http://localhost:8080/api/products";
+const API_URL =
+  window.FORYOU_PRODUCTS_API_URL ||
+  `${window.FORYOU_API_BASE_URL}/products`;
 
 const productsGrid = document.getElementById("products-grid");
 
