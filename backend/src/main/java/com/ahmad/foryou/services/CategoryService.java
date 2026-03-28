@@ -21,6 +21,7 @@ public class CategoryService {
 
     public List<CategoryDTO> getAll(String lang) {
         return categoryRepository.findAll().stream()
+                .sorted(Comparator.comparingLong(Category::getId))
                 .filter(Category::isActive)
                 .map(c -> {
                     String name = lang.equals("he") && c.getNameHe() != null && !c.getNameHe().isEmpty() ? c.getNameHe() : c.getName();

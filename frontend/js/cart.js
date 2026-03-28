@@ -115,8 +115,8 @@ function renderCart() {
 
   const subtotal = getSubtotal(cart);
   const totalItems = getTotalItems(cart);
-  // Keep the contact number in one place so it is easy to replace later.
-  const whatsappNumber = "05000000000";
+  // Store in international format so the WhatsApp deep link always resolves correctly.
+  const whatsappNumber = "97246114442";
   const whatsappMessage = generateWhatsAppMessage(cart);
 
   cartContent.innerHTML = `
@@ -186,7 +186,7 @@ function renderCart() {
         <div class="summary-buttons">
           <a
             class="cart-btn cart-btn-dark"
-            href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}"
+            href="https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${whatsappMessage}"
             target="_blank"
           >
             ${getTranslation('sendOrderWhatsApp')}
